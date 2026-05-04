@@ -213,24 +213,21 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   padding-top: 72px; /* altura do header */
   overflow: hidden;
-  background: #0a3cb4; /* azul royal de fallback */
+  background: #0a0f2c;
 }
-
-/* Overlay azul escuro — cobre todo o hero, mais denso à esquerda, transparente à direita */
-.hero-overlay {
+/* Pseudo-elemento ::before — gradiente suave do fundo azul para a imagem, sem linha de separação */
+.hero::before {
+  content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(to right, #0a0f2c 50%, transparent 100%);
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    to right,
-    rgba(10, 15, 44, 0.98) 0%,
-    rgba(10, 15, 44, 0.95) 38%,
-    rgba(10, 15, 44, 0.65) 58%,
-    rgba(10, 15, 44, 0.15) 78%,
-    rgba(10, 15, 44, 0.00) 100%
-  );
 }
+/* Overlay removido — substituído pelo ::before acima */
 
 /* Layout flex duas colunas */
 .hero-inner {
@@ -243,7 +240,6 @@ a { text-decoration: none; color: inherit; }
   flex: 1;
   min-height: calc(100vh - 72px);
 }
-
 /* Coluna esquerda — 55% — texto e CTAs */
 .hero-left {
   flex: 0 0 55%;
@@ -253,25 +249,27 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   padding: 60px 48px 60px 5%;
   text-align: left;
-  background: transparent; /* sem background próprio — usa o fundo do #hero */
+  background: transparent; /* sem background próprio */
+  position: relative;
+  z-index: 2; /* acima do gradiente ::before */
 }
-
-/* Coluna direita — 45% — imagem da profissional */
+/* Coluna direita — contém apenas a imagem posicionada absolutamente */
 .hero-right {
   flex: 0 0 45%;
   max-width: 45%;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* a imagem extrapola para cobrir o hero inteiro à direita */
 }
-
-/* Imagem da profissional — elemento <img> */
+/* Imagem da profissional — absolute, cobre o lado direito do hero inteiro */
 .hero-photo {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  right: 0;
+  top: 0;
+  width: 60%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
+  z-index: 0;
   display: block;
 }
 
