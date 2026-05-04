@@ -216,7 +216,7 @@ a { text-decoration: none; color: inherit; }
   background: #0a3cb4; /* azul royal de fallback */
 }
 
-/* Overlay azul escuro — cobre apenas a coluna esquerda */
+/* Overlay azul escuro — cobre todo o hero, mais denso à esquerda, transparente à direita */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -224,11 +224,11 @@ a { text-decoration: none; color: inherit; }
   pointer-events: none;
   background: linear-gradient(
     to right,
-    rgba(8, 40, 140, 0.98) 0%,
-    rgba(8, 40, 140, 0.96) 40%,
-    rgba(8, 40, 140, 0.70) 60%,
-    rgba(8, 40, 140, 0.10) 80%,
-    rgba(8, 40, 140, 0.00) 100%
+    rgba(10, 15, 44, 0.98) 0%,
+    rgba(10, 15, 44, 0.95) 38%,
+    rgba(10, 15, 44, 0.65) 58%,
+    rgba(10, 15, 44, 0.15) 78%,
+    rgba(10, 15, 44, 0.00) 100%
   );
 }
 
@@ -253,6 +253,7 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   padding: 60px 48px 60px 5%;
   text-align: left;
+  background: transparent; /* sem background próprio — usa o fundo do #hero */
 }
 
 /* Coluna direita — 45% — imagem da profissional */
@@ -279,6 +280,7 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  width: fit-content; /* apenas a largura do texto + padding */
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.30);
   color: var(--white);
@@ -289,6 +291,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 100px;
   margin-bottom: 24px;
   backdrop-filter: blur(8px);
+  align-self: flex-start; /* garante que não estique na coluna flex */
 }
 .badge-dot {
   width: 8px;
