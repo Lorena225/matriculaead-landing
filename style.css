@@ -658,6 +658,132 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.7;
 }
 
+/* ===== COUNCILS =====  */
+.councils {
+  padding: 48px 0;
+  background: var(--white);
+  border-top: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
+}
+.councils-label {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  margin-bottom: 32px;
+}
+.councils-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+/* Item de logo do conselho */
+.council-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background: var(--off-white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  min-width: 160px;
+  max-width: 200px;
+}
+.council-logo-item:hover {
+  border-color: var(--blue-primary);
+  box-shadow: 0 4px 16px rgba(0, 104, 208, 0.12);
+  transform: translateY(-2px);
+}
+.council-logo-item--highlight {
+  border-color: #1a6e2e;
+  background: #f0f9f3;
+}
+.council-logo-item--highlight:hover {
+  border-color: #1a6e2e;
+  box-shadow: 0 4px 16px rgba(26, 110, 46, 0.15);
+}
+.council-logo-img {
+  max-height: 64px;
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: none;
+}
+
+/* ===== DIFFERENTIALS ===== */
+.differentials {
+  position: relative;
+  padding: 96px 0;
+  overflow: hidden;
+}
+
+.diff-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.diff-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diff-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(0,68,138,0.90) 100%);
+}
+
+.differentials .container { position: relative; z-index: 1; }
+
+.diff-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.diff-pillar {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition);
+}
+
+.diff-pillar:hover {
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.diff-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.diff-pillar h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.diff-pillar p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
 /* ===== COUNCILS ===== */
 .councils {
   padding: 56px 0;
@@ -1278,6 +1404,29 @@ a { text-decoration: none; color: inherit; }
   .hero-trust { flex-direction: column; gap: 10px; }
   .btn-primary { font-size: 0.875rem; padding: 14px 24px; }
   .btn-final-cta { font-size: 0.95rem; padding: 16px 28px; }
+}
+
+
+/* ===== SOCIAL ICONS FOOTER ===== */
+.social-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  transition: filter var(--transition), transform var(--transition);
+}
+.social-link--instagram:hover .social-icon-img {
+  filter: none;
+}
+.social-link--facebook:hover .social-icon-img {
+  filter: none;
+}
+.social-link--youtube:hover .social-icon-img {
+  filter: none;
+}
+.social-link--whatsapp:hover .social-icon-img {
+  filter: none;
 }
 
 /* ===== ANIMATIONS ===== */
