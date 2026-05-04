@@ -206,54 +206,72 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===== HERO ===== */
-/* ===== HERO ===== */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding-top: 72px;
+  flex-direction: column;
+  padding-top: 72px; /* altura do header */
   overflow: hidden;
-  background: #0a4fc4; /* azul royal de fallback */
+  background: #0a3cb4; /* azul royal de fallback */
 }
 
-/* Imagem de fundo full-width */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 65% center;
-}
-
-/* Overlay azul royal sobre a imagem — igual à referência */
+/* Overlay azul escuro — cobre apenas a coluna esquerda */
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
   background: linear-gradient(
     to right,
-    rgba(10, 55, 170, 0.97) 0%,
-    rgba(10, 55, 170, 0.93) 30%,
-    rgba(10, 55, 170, 0.72) 50%,
-    rgba(10, 55, 170, 0.30) 70%,
-    rgba(10, 55, 170, 0.05) 100%
+    rgba(8, 40, 140, 0.98) 0%,
+    rgba(8, 40, 140, 0.96) 40%,
+    rgba(8, 40, 140, 0.70) 60%,
+    rgba(8, 40, 140, 0.10) 80%,
+    rgba(8, 40, 140, 0.00) 100%
   );
 }
 
-/* Conteúdo sobreposto — alinhado à esquerda */
-.hero-content {
+/* Layout flex duas colunas */
+.hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   width: 100%;
-  max-width: 520px;
-  padding-top: 60px;
-  padding-bottom: 80px;
-  margin-left: 0;
+  flex: 1;
+  min-height: calc(100vh - 72px);
+}
+
+/* Coluna esquerda — 55% — texto e CTAs */
+.hero-left {
+  flex: 0 0 55%;
+  max-width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 48px 60px 5%;
   text-align: left;
+}
+
+/* Coluna direita — 45% — imagem da profissional */
+.hero-right {
+  flex: 0 0 45%;
+  max-width: 45%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagem da profissional — elemento <img> */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
 }
 
 /* Badge */
@@ -286,20 +304,20 @@ a { text-decoration: none; color: inherit; }
 
 /* Título principal */
 .hero-headline {
-  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
   font-weight: 900;
   color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 16px;
-  letter-spacing: -0.3px;
+  line-height: 1.18;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
 }
 /* Palavras em destaque vermelho/laranja — igual à referência */
 .hero-highlight {
   display: block;
   color: #FF3B3B;
-  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.18;
 }
 
 /* Subtítulo em negrito */
@@ -1500,7 +1518,8 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .hero-content { max-width: 560px; }
+  .hero-left { flex: 0 0 58%; max-width: 58%; padding: 50px 32px 50px 4%; }
+  .hero-right { flex: 0 0 42%; max-width: 42%; }
   .profile-cards { grid-template-columns: repeat(2, 1fr); }
   .course-card { flex: 0 0 calc((100% - 24px) / 2); min-width: calc((100% - 24px) / 2); }
   .diff-pillars { grid-template-columns: 1fr; gap: 20px; }
@@ -1516,7 +1535,12 @@ a { text-decoration: none; color: inherit; }
   .btn-header-cta { display: none; }
   .menu-toggle { display: flex; }
 
-  .hero-content { padding-top: 40px; padding-bottom: 60px; max-width: 100%; }
+  /* Hero mobile: empilha verticalmente — texto em cima, imagem abaixo */
+  .hero-inner { flex-direction: column; min-height: auto; }
+  .hero-left { flex: 0 0 100%; max-width: 100%; padding: 40px 24px 36px 24px; }
+  .hero-right { flex: 0 0 auto; max-width: 100%; height: 300px; position: relative; }
+  .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .hero-overlay { background: linear-gradient(to bottom, rgba(8,40,140,0.98) 0%, rgba(8,40,140,0.90) 60%, rgba(8,40,140,0.50) 100%); }
 
   .profile-cards { grid-template-columns: 1fr; }
   .course-card { flex: 0 0 100%; min-width: 100%; }
@@ -1536,6 +1560,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 480px) {
+  .hero-right { height: 240px; }
   .hero-trust { flex-direction: column; gap: 10px; }
   .btn-primary { font-size: 0.875rem; padding: 14px 24px; }
   .btn-final-cta { font-size: 0.95rem; padding: 16px 28px; }
