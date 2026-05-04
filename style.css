@@ -227,7 +227,7 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 70% center;
+  object-position: 65% center;
 }
 
 /* Overlay azul royal sobre a imagem — igual à referência */
@@ -235,12 +235,12 @@ a { text-decoration: none; color: inherit; }
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    105deg,
-    rgba(10, 60, 180, 0.95) 0%,
-    rgba(10, 60, 180, 0.88) 35%,
-    rgba(10, 60, 180, 0.60) 58%,
-    rgba(10, 60, 180, 0.22) 80%,
-    rgba(10, 60, 180, 0.05) 100%
+    to right,
+    rgba(10, 55, 170, 0.97) 0%,
+    rgba(10, 55, 170, 0.93) 30%,
+    rgba(10, 55, 170, 0.72) 50%,
+    rgba(10, 55, 170, 0.30) 70%,
+    rgba(10, 55, 170, 0.05) 100%
   );
 }
 
@@ -248,9 +248,12 @@ a { text-decoration: none; color: inherit; }
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 640px;
+  width: 100%;
+  max-width: 520px;
   padding-top: 60px;
   padding-bottom: 80px;
+  margin-left: 0;
+  text-align: left;
 }
 
 /* Badge */
@@ -283,21 +286,20 @@ a { text-decoration: none; color: inherit; }
 
 /* Título principal */
 .hero-headline {
-  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
   font-weight: 900;
   color: var(--white);
-  line-height: 1.18;
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
 }
-
 /* Palavras em destaque vermelho/laranja — igual à referência */
 .hero-highlight {
   display: block;
   color: #FF3B3B;
-  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
   font-weight: 900;
-  line-height: 1.18;
+  line-height: 1.2;
 }
 
 /* Subtítulo em negrito */
@@ -382,7 +384,9 @@ a { text-decoration: none; color: inherit; }
 .hero-trust {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
+  align-items: center;
+  margin-top: 4px;
 }
 .trust-item {
   color: rgba(255,255,255,0.90);
@@ -391,6 +395,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
 }
 
 /* ===== SECTION COMMONS ===== */
