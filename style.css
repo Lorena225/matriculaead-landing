@@ -206,6 +206,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===== HERO ===== */
+/* ===== HERO ===== */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -213,7 +214,9 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   padding-top: 72px;
   overflow: hidden;
+  background: #0a4fc4; /* azul royal de fallback */
 }
+
 /* Imagem de fundo full-width */
 .hero-bg {
   position: absolute;
@@ -224,37 +227,41 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: 70% center;
 }
-/* Overlay: escuro à esquerda, transparente à direita — pessoa visível */
+
+/* Overlay azul royal sobre a imagem — igual à referência */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    100deg,
-    rgba(10, 18, 38, 0.92) 0%,
-    rgba(10, 18, 38, 0.78) 38%,
-    rgba(10, 18, 38, 0.40) 62%,
-    rgba(10, 18, 38, 0.10) 100%
+    105deg,
+    rgba(10, 60, 180, 0.95) 0%,
+    rgba(10, 60, 180, 0.88) 35%,
+    rgba(10, 60, 180, 0.60) 58%,
+    rgba(10, 60, 180, 0.22) 80%,
+    rgba(10, 60, 180, 0.05) 100%
   );
 }
+
 /* Conteúdo sobreposto — alinhado à esquerda */
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 620px;
+  max-width: 640px;
   padding-top: 60px;
   padding-bottom: 80px;
 }
+
 /* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.30);
   color: var(--white);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 2px;
   padding: 6px 14px;
@@ -273,46 +280,118 @@ a { text-decoration: none; color: inherit; }
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(0.85); }
 }
+
+/* Título principal */
 .hero-headline {
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
   font-weight: 900;
   color: var(--white);
-  line-height: 1.15;
-  margin-bottom: 16px;
+  line-height: 1.18;
+  margin-bottom: 20px;
   letter-spacing: -0.5px;
 }
-.hero-headline span { color: var(--red-soft); }
+
+/* Palavras em destaque vermelho/laranja — igual à referência */
+.hero-highlight {
+  display: block;
+  color: #FF3B3B;
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+/* Subtítulo em negrito */
 .hero-subline {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: rgba(255,255,255,0.88);
-  font-weight: 500;
-  margin-bottom: 24px;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: rgba(255,255,255,0.95);
+  font-weight: 600;
+  margin-bottom: 18px;
   line-height: 1.5;
 }
+
+/* Texto descritivo */
 .hero-text {
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 .hero-text p {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.7;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.75;
   margin-bottom: 10px;
 }
-.hero-ctas { margin-bottom: 36px; }
+
+/* Botões CTA — modelo referência: vermelho sólido + transparente com borda */
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 32px;
+  align-items: center;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #E8000A;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(232,0,10,0.40);
+}
+.btn-hero-primary:hover {
+  background: #c50008;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,0,10,0.50);
+}
+
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 4px;
+  border: 2px solid rgba(255,255,255,0.80);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-hero-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--white);
+  transform: translateY(-2px);
+}
+.btn-hero-secondary svg { flex-shrink: 0; }
+
+/* Badges de credibilidade na base — checkmarks simples */
 .hero-trust {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 .trust-item {
+  color: rgba(255,255,255,0.90);
+  font-size: 0.875rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.88);
-  font-size: 0.875rem;
-  font-weight: 500;
+  gap: 4px;
 }
-.trust-item svg { color: #25D366; flex-shrink: 0; }
 
 /* ===== SECTION COMMONS ===== */
 .section-header {
